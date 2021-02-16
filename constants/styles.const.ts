@@ -22,7 +22,8 @@ const colors = {
 export namespace Colors {
   export const background = colors.red;
   export const button = {
-    primary: '#44f'
+    primary: '#44f',
+    cancel: 'red'
   };
   export const cell = colors.lightGray;
 };
@@ -52,10 +53,17 @@ export const buttonStyle: TextStyle = {
   fontSize: 20, 
   color: Colors.button.primary,
   backgroundColor: '#888',
-  paddingHorizontal: 5,
-  paddingTop: 5, // impossible to center vertically in a correct way ?
-  textAlignVertical: 'center'
+  paddingHorizontal: 10,
+  paddingVertical: 10,
+  // paddingTop: 5, // impossible to center vertically in a correct way ?
+  // paddingBottom: 5,
+  textAlignVertical: 'center',
 };
+
+export const buttonStyleCancel: TextStyle = {
+  ...buttonStyle,
+  color: Colors.button.cancel
+}
 
 // export const buttonContainerStyle: ViewStyle & TextStyle = {
 //   justifyContent: "center",

@@ -1,45 +1,50 @@
-import { StyleSheet, TextInput, View } from "react-native";
+import { Modal, StyleSheet, TextInput, View } from "react-native";
 
 import React, { useState } from 'react';
-import { inputStyle, buttonStyle } from "constants/styles.const";
+import { inputStyle, buttonStyle, buttonStyleCancel } from "constants/styles.const";
 // https://www.npmjs.com/package/react-native-button
 import Button from "react-native-button";
 
 export interface GoalInputProps {
-  onAddGoal: (text: string) => void
+  // Inputs
+  visible: boolean,
+  // Outputs
+  onAddGoal: (text: string) => void,
+  onCancel: () => void,
 };
 
 export default function GoalInput(props: GoalInputProps) {
 
   const [enteredGoal, setEnteredGoal] = useState('Caca');
-  const onChangeGoal = (text: string) => {
-    setEnteredGoal(text);
-  };
-  // const addGoal = () => {
-  //   // const goal = newGoal(enteredGoal);
-  //   // setGoals(goals => [...goals, goal]);
-  // }; 
   
   const onAddGoal = () => props.onAddGoal(enteredGoal);
+  const onCancel = () => props.onCancel();
 
   return (
-    <View style={{ flexDirection: 'row' }}>
-        <TextInput 
-          style={ styles.input } 
-          placeholder="Course goal" 
-          onChangeText={ onChangeGoal } 
-          value={ enteredGoal }>
-        </TextInput>
+    <Modal visible={ props.visible } animationType={ 'slide' }>
+      <View style={ styles.container }>
+          <TextInput 
+            style={ styles.input } 
+            placeholder="Course goal" 
+            onChangeText={ text => setEnteredGoal(text) } 
+            value={ enteredGoal }>
+          </TextInput>
 
-        {/* <Button>Add</Button> */}
-        <Button onPress={ onAddGoal } style={ styles.button } >ADD</Button>
-      </View>
+          <View style={ styles.buttons }>
+            <Button onPress={ onCancel } style={ buttonStyleCancel } containerStyle={ styles.buttonContainer }>Cancel</Button>
+            <Button onPress={ onAddGoal } style={ buttonStyle } containerStyle={ styles.buttonContainer }>ADD</Button>
+          </View>
+        </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  inputContainer: { flexDirection: 'row' },
-  input: { ...inputStyle, flex: 4 },
-  button: { ...buttonStyle, flex: 1, marginLeft: 10 },
+  container: { flexDirection: 'column', flex: 1, justifyContent: 'center', alignContent: 'center', padding: 20 },
+  input: { ...inputStyle },
+  buttons: { flexDirection: 'row', justifyContent:'space-between' },
+  // buttonAdd: { ...buttonStyle },
+  // buttonCancel: { ...buttonStyleCancel },
+  buttonContainer: { width: '40%' },
 });
 
