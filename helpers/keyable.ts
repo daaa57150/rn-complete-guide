@@ -1,4 +1,5 @@
 import * as u from '@helpers/utils';
+import _ from 'lodash-es';
 
 // export interface Keyable {
 //   key: string
@@ -46,5 +47,9 @@ export function keyable(obj: any): Keyable {
     value: obj
   } as any;
 }
+
+export function removeByKey(items: Keyable[], key: string) {
+  return _.reject(items, { key })
+} 
 
 

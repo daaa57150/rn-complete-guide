@@ -2,10 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ViewStyle, TextStyle, TextInput, StyleProp, ScrollView, FlatList } from 'react-native';
 import { Colors, appContainerStyle, inputStyle, buttonStyle, listItemStyle } from './constants/styles.const';
-// import Button from 'react-native-button';
-
-// https://www.npmjs.com/package/react-native-button
-import Button from 'react-native-button';
+import _ from 'lodash-es';
 import { Keyable, keyable, KeyablePrimitive } from '@helpers/keyable';
 import GoalItem from '@components/goal-item.component';
 import GoalInput from '@components/goal-input.component';
@@ -19,10 +16,14 @@ const newGoal = (value: string): Goal => keyable(value);
 export default function App() {
   const [goals, setGoals] = useState([] as Goal[]);
   
-  const addGoal = (text: string) => {
+  const addGoal = (text: string): void => {
     const goal = newGoal(text);
     setGoals(goals => [...goals, goal]);
   }; 
+
+  const removeGoal = (goal: Goal): void => {
+    setGoals(goals => _.reject(goals, { key: goal.key }));
+  }
 
   return (
     <View style={ styles.container }>
@@ -31,7 +32,7 @@ export default function App() {
 
       {/* List of goals */}
       <FlatList data={ goals } renderItem={ itemInfo => (
-        <GoalItem text={ itemInfo.item.value }/>
+        <GoalItem text={ itemInfo.item.value } onDelete={ () => removeGoal(itemInfo.item) }/>
       )}/>
 
       <StatusBar style="auto" />

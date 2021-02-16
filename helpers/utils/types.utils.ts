@@ -43,5 +43,7 @@ interface HTMLInputEvent extends Event {
 
 export type HTMLButtonType = 'submit' | 'button' | 'reset';
 */
-export type AsyncFunction<T> = () => Promise<T>;
-export type MaybeAsyncFunction<T> = () => T | Promise<T>;
+
+// export type Function<T = void> = () => T;
+export type AsyncFunction<T = void> = () => Promise<T>;
+export type MaybeAsyncFunction<T = void> = () => T | Promise<T>;

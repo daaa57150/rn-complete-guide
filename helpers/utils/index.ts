@@ -17,4 +17,5 @@ export * from './random.utils';
 // export * from './string.utils';
 // export * from './types.utils';
 // export * from './url.utils';
+export * from './const.utils';
 

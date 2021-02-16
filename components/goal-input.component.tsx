@@ -2,6 +2,7 @@ import { StyleSheet, TextInput, View } from "react-native";
 
 import React, { useState } from 'react';
 import { inputStyle, buttonStyle } from "constants/styles.const";
+// https://www.npmjs.com/package/react-native-button
 import Button from "react-native-button";
 
 export interface GoalInputProps {
