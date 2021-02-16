@@ -3,7 +3,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@components/*": ["components/*"]
     },
     "importHelpers": true,
 
