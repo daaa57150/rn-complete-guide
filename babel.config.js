@@ -18,8 +18,10 @@ module.exports = function(api) {
           ],
           root: ['./'],
           alias: {
-            '@helpers': './helpers',
-            '@components': './components'
+            '@helpers': './src/helpers',
+            '@components': './src/components',
+            '@constants': './src/constants',
+            '@models': './src/models'
           },
         }
       ]

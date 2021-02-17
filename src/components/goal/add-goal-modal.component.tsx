@@ -1,7 +1,6 @@
 import { Modal, StyleSheet, TextInput, View } from "react-native";
-
 import React, { useState } from 'react';
-import { inputStyle, buttonStyle, buttonStyleCancel } from "constants/styles.const";
+import { inputStyle, buttonStyle, buttonStyleCancel } from "@constants/styles.const";
 // https://www.npmjs.com/package/react-native-button
 import Button from "react-native-button";
 

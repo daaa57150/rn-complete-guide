@@ -1,5 +1,5 @@
 
-import { appContainerStyle, buttonStyle, inputStyle, listItemStyle } from 'constants/styles.const';
+import { appContainerStyle, buttonStyle, inputStyle, listItemStyle } from '@constants/styles.const';
 import { View, Text, StyleSheet, TouchableNativeFeedback, TouchableOpacityBase, TouchableOpacity } from 'react-native';
 
 import React, { useState } from 'react';
