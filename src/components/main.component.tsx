@@ -1,49 +1,21 @@
+import { appContainerStyle, buttonStyle, Colors } from '@constants/styles.const';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ViewStyle, TextStyle, TextInput, StyleProp, ScrollView, FlatList } from 'react-native';
-import { Colors, appContainerStyle, inputStyle, buttonStyle, listItemStyle } from '@constants/styles.const';
-import _ from 'lodash-es';
-import { Keyable, keyable, KeyablePrimitive } from '@helpers/keyable';
-import GoalItem from '@components/goal/goal-item.component';
-import GoalInput from '@components/goal/add-goal-modal.component';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 
-// Should go in the domain
-type Goal = KeyablePrimitive<string>;
 
-// private tool
-const newGoal = (value: string): Goal => keyable(value);
+// export or private things can go here (no `useState`!)
+
+const logSomething = () => console.log('Something');
 
 export default function Main() {
-  const [goals, setGoals] = useState([] as Goal[]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  
-  const addGoal = (text: string): void => {
-    const goal = newGoal(text);
-    setGoals(goals => [...goals, goal]);
-    dismissModal();
-  }; 
-
-  const removeGoal = (goal: Goal): void => {
-    setGoals(goals => _.reject(goals, { key: goal.key }));
-  }
-
-  const showModal = () => setIsModalVisible(true);
-  const dismissModal = () => setIsModalVisible(false);
+  // state management goes here
 
   return (
     <View style={ styles.container } key="[Main]">
-      {/* Show the modal */}
-      <Button style={ styles.button } onPress={ showModal } key="AddGoal">Add a new goal...</Button>
-
-       {/* Input modal directly here ? */}
-      <GoalInput visible={ isModalVisible } onAddGoal={ addGoal } onCancel={ dismissModal }/>
-
-      {/* List of goals */}
-      <FlatList data={ goals } renderItem={ itemInfo => (
-        <GoalItem text={ itemInfo.item.value } onDelete={ () => removeGoal(itemInfo.item) }/>
-      )}/>
-
+      <Text style={ styles.text }>This is Main.tsx</Text>
+      <Button onPress={ ()  => logSomething() } style={ buttonStyle }>Log something</Button>
       <StatusBar style="auto" />
     </View>
   );
@@ -51,5 +23,5 @@ export default function Main() {
 
 const styles = StyleSheet.create({
   container: appContainerStyle,
-  button: { ...buttonStyle, marginBottom: 20},
+  text: { backgroundColor: Colors.cell }
 });
