@@ -5,7 +5,7 @@ import { Colors, appContainerStyle, inputStyle, buttonStyle, listItemStyle } fro
 import _ from 'lodash-es';
 import { Keyable, keyable, KeyablePrimitive } from '@helpers/keyable';
 import GoalItem from '@components/goal-item.component';
-import GoalInput from '@components/goal-input.component';
+import GoalInput from '@components/add-goal-modal.component';
 import Button from 'react-native-button';
 
 // Should go in the domain
@@ -32,9 +32,9 @@ export default function App() {
   const dismissModal = () => setIsModalVisible(false);
 
   return (
-    <View style={ styles.container }>
+    <View style={ styles.container } key="[App]">
       {/* Show the modal */}
-      <Button style={ styles.button } onPress={ showModal }>Add a new goal...</Button>
+      <Button style={ styles.button } onPress={ showModal } key="AddGoal">Add a new goal...</Button>
 
        {/* Input modal directly here ? */}
       <GoalInput visible={ isModalVisible } onAddGoal={ addGoal } onCancel={ dismissModal }/>
@@ -48,14 +48,6 @@ export default function App() {
     </View>
   );
 };
-
-// interface Styles {
-//   container: ViewStyle;
-//   inputContainer: ViewStyle,
-//   input: TextStyle,
-//   button: TextStyle,
-//   listItem: ViewStyle
-// };
 
 const styles = StyleSheet.create({
   container: appContainerStyle,

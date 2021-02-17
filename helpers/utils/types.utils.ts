@@ -3,6 +3,9 @@
 
 import _ from "lodash-es";
 
+
+export type Primitive = string | number | bigint | boolean | symbol | null | undefined;
+
 /** A string that can contain HTML */
 export type Html = string;
 

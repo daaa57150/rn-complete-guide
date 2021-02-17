@@ -1,5 +1,6 @@
 import * as u from '@helpers/utils';
 import _ from 'lodash-es';
+import { Primitive } from './utils/types.utils';
 
 // export interface Keyable {
 //   key: string
@@ -28,9 +29,6 @@ export interface KeyablePrimitive<T> extends Keyable {
 export function isKeyable(obj: Partial<Keyable>): obj is Keyable {
   return typeof(obj) === 'object' && 'key'in obj && typeof obj.key === 'string';
 }
-
-export type Primitive = string | number | bigint | boolean | symbol | null | undefined;
-
 
 // export function keyable
 
