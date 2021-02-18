@@ -5,12 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-        "name": "Attach to packager",
-        "cwd": "${workspaceFolder}",
-        "type": "reactnative",
-        "request": "attach",
-        "port": "19000",
-        "sourceMaps": true
+      "name": "Attach to packager",
+      "cwd": "${workspaceFolder}",
+      "type": "reactnative",
+      "request": "attach",
+      "port": "8081",
+      "sourceMaps": true
     }
   ]
 }
