@@ -1,11 +1,15 @@
 import { shadowStyle } from '@constants/styles.const';
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 
-export interface CardProps  {
-  children?: ReactNode;
+// export interface CardProps  {
+//   // children?: ReactNode;
+//   style?: ViewStyle
+// }
+
+export type CardProps = PropsWithChildren<{
   style?: ViewStyle
-}
+}>;
 
 export default function Card(props: CardProps) {
   // state management goes here
@@ -18,7 +22,7 @@ export default function Card(props: CardProps) {
 };
 
 const styles = StyleSheet.create({
-  card: { ...shadowStyle },
+  card: { ...shadowStyle, borderRadius: 8 },
 });
 
 

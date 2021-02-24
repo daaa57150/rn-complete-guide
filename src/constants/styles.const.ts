@@ -20,10 +20,11 @@ const colors = {
 
 // Colors by usage
 export namespace Colors {
+  export const primary = colors.blue;
   export const background = colors.red;
   export const button = {
-    primary: '#44f',
-    cancel: 'red'
+    primary: primary,
+    cancel: colors.red
   };
   export const cell = colors.lightGray;
 };
@@ -37,6 +38,7 @@ export namespace Spaces {
   };
 
   export const innerPadding = 10;
+  export const separation = 10;
 };
 
 export const Fonts = {
