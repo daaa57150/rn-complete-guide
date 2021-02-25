@@ -87,6 +87,8 @@ export const appContainerStyle: ViewStyle = {
 export const pageStyle: ViewStyle = {
   paddingHorizontal: Spaces.paddingScreen.horizontal,
   paddingTop: 20,
+  flex: 1,
+  width: '100%'
 };
 
 export const shadowStyle: ViewStyle = {

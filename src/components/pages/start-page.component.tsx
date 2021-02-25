@@ -3,6 +3,7 @@ import Input from '@components/common/input.component';
 import NumberContainer from '@components/common/number-container.component';
 import RenderIf from '@components/common/render-if.component';
 import { buttonStyle, buttonStyleCancel, pageStyle, Spaces } from '@constants/styles.const';
+import { Deferred } from '@helpers/deferred';
 import * as u from '@helpers/utils';
 import _ from 'lodash-es';
 import React, { useState } from 'react';
@@ -12,8 +13,24 @@ import Button from 'react-native-button';
 // import HideableView from 'react-native-hideable-view';
 
 export interface StartPageProps  {
-  // props
+  onStartGame: (enteredNumber: number) => void;
 }
+
+/** Returns the error message if something is wrong */
+const validateInput = (enteredNumber?: number): string|undefined => {
+  if(_.isNil(enteredNumber)) {
+    return 'Please enter a value';
+  }
+  if(enteredNumber <= 0 || enteredNumber > 99) {
+    return 'Please enter a number between 1 and 99';
+  }
+};
+
+const alertError = async (message: string): Promise<void> => {
+  const d = new Deferred();
+  const okButton: AlertButton = { text: 'Whatever', style: 'default', onPress: () => d.resolve() };
+  Alert.alert('Invalid number', message, [okButton]);
+};
 
 export default function StartPage(props: StartPageProps) {
 
@@ -35,12 +52,13 @@ export default function StartPage(props: StartPageProps) {
     setConfirmed(false);
   };
 
-  const confirmNumber = () => {
+  const confirmNumber = async () => {
     Keyboard.dismiss();
 
-    const error = validateInput();
+    const error = validateInput(enteredNumber);
     if(!_.isNil(error)) {
-      alertError(error);
+      await alertError(error);
+      resetNumber();
       return;
     }
 
@@ -48,19 +66,10 @@ export default function StartPage(props: StartPageProps) {
     setConfirmed(true);
   };
 
-  /** Returns the error message if something is wrong */
-  const validateInput = (): string|undefined => {
-    if(_.isNil(enteredNumber)) {
-      return 'Please enter a value';
+  const startGame = () => {
+    if(!_.isNil(enteredNumber)) {
+      props.onStartGame(enteredNumber);
     }
-    if(enteredNumber <= 0 || enteredNumber > 99) {
-      return 'Please enter a number between 1 and 99';
-    }
-  };
-
-  const alertError = (message: string) => {
-    const okButton: AlertButton = { text: 'Whatever', style: 'default', onPress: resetNumber };
-    Alert.alert('Invalid number', message, [okButton]);
   };
 
   return (
@@ -91,7 +100,7 @@ export default function StartPage(props: StartPageProps) {
           <Card style={ styles.numberCard }>
             <Text>Selected number:</Text>
             <NumberContainer>{ getEnteredNumberStr() }</NumberContainer>
-            <Button style={ styles.buttonConfirm }>Start game</Button>
+            <Button style={ styles.buttonConfirm } onPress={ startGame }>Start game</Button>
           </Card>
         </RenderIf>
 
@@ -103,7 +112,7 @@ export default function StartPage(props: StartPageProps) {
 const cardStyle: ViewStyle = { backgroundColor: 'white', padding: Spaces.innerPadding };
 
 const styles = StyleSheet.create({
-  page: { ...pageStyle, flex: 1, width: '100%'},
+  page: pageStyle,
   inputCard: cardStyle,
   text: { textAlign: 'center', paddingVertical: Spaces.innerPadding },
   buttonView: { flexDirection: 'row', justifyContent: 'space-between', width: '100%', backgroundColor: 'purple' },
