@@ -1,4 +1,4 @@
-import { Colors } from '@constants/styles.const';
+import { Colors, fontFamily } from '@constants/styles.const';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
 
 const styles = StyleSheet.create({
   header: { width: '100%', height: 83, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f5f', marginTop: 20 },
-  title: { backgroundColor: Colors.cell }
+  title: { backgroundColor: Colors.cell, fontFamily: fontFamily.OpenSansBold }
 });
 
 

@@ -1,7 +1,7 @@
 // see https://stackoverflow.com/a/34926643 for a concise explanation on barrels
 
 // export * from './array.utils';
-// export * from './async.utils';
+export * from './async.utils';
 // export * from './route.utils';
 // export * from './string.utils';
 // export * from './types.utils';

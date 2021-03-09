@@ -101,4 +101,9 @@ export const shadowStyle: ViewStyle = {
   elevation: 6
 }
 
+export const fontFamily = {
+  OpenSansBold: 'OpenSans-Bold',
+  OpenSansRegular: 'OpenSans-Regular'
+};
+
 

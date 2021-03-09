@@ -7,7 +7,8 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 
 export interface GamePageProps  {
-  userChoice: number
+  numberToGuess: number,
+  onEndGame: (guessCount: number, numberToGuess: number) => void
 }
 
 export interface Bounds {
@@ -25,17 +26,15 @@ function guess(min: number, max: number, answer?: number): number {
 
 export default function GamePage(props: GamePageProps) {
   const [currentBounds, setCurrentBounds] = useState<Bounds>({ lower: 1, upper: 99 });
-  const [currentGuess, setCurrentGuess] = useState(guess(1, 99, props.userChoice));
+  const [currentGuess, setCurrentGuess] = useState(guess(1, 99, props.numberToGuess));
   const [guessCount, setGuessCount] = useState(0);
 
   // what a joke
   useEffect(() => {
     console.log('// effect //')
-    if(currentGuess === props.userChoice) {
-      const message = `Guessed: ${currentGuess} in ${guessCount} rounds`;
-      console.log(message);
-      // TODO: change to game over screen (hopefully there is a graceful way of doing that...)
-      Alert.alert('Game Over', `${message}\nTODO: display another screen.`);
+    if(currentGuess === props.numberToGuess) {
+      console.log(`Guessed: ${currentGuess} in ${guessCount} rounds`);
+      props.onEndGame(guessCount, currentGuess);
     }
   });
 
@@ -51,7 +50,7 @@ export default function GamePage(props: GamePageProps) {
 
   const lower = () => {
     console.log('lower!!');
-    if(props.userChoice > currentGuess) {
+    if(props.numberToGuess > currentGuess) {
       alertNoJoke();
     } else {
       guessAgain(currentBounds.lower, currentGuess - 1);
@@ -60,7 +59,7 @@ export default function GamePage(props: GamePageProps) {
 
   const higher = () => {
     console.log('higher!!');
-    if(props.userChoice < currentGuess) {
+    if(props.numberToGuess < currentGuess) {
       alertNoJoke();
     } else {
       guessAgain(currentGuess + 1, currentBounds.upper);
