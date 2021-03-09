@@ -18,8 +18,8 @@ if (__DEV__) {
 
 const loadFonts = async () => {
   return Font.loadAsync({
-    [fontFamily.OpenSansBold]: require('./assets/fonts/OpenSans-Bold.ttf'),
-    [fontFamily.OpenSansRegular]: require('./assets/fonts/OpenSans-Regular.ttf'),
+    [fontFamily.OpenSansBold]: require('@fonts/OpenSans-Bold.ttf'),
+    [fontFamily.OpenSansRegular]: require('@fonts/OpenSans-Regular.ttf'),
   });
 };
 

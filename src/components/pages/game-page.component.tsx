@@ -1,6 +1,7 @@
 import Card from '@components/common/card.component';
 import NumberContainer from '@components/common/number-container.component';
 import { buttonStyle, pageStyle, Spaces } from '@constants/styles.const';
+import { Ionicons } from '@expo/vector-icons';
 import * as u from '@helpers/utils';
 import React, { useEffect, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
@@ -71,8 +72,12 @@ export default function GamePage(props: GamePageProps) {
       <Text>Opponent's guess</Text>
       <NumberContainer>{ currentGuess }</NumberContainer>
       <Card style={ styles.buttonCard }>
-        <Button style={ styles.button } onPress={ lower }>Lower</Button>
-        <Button style={ styles.button } onPress={ higher }>Higher</Button>
+        <Button style={ styles.button }  containerStyle={ styles.buttonContainer } onPress={ lower }>
+          <Ionicons name="md-remove-circle" size={ 50 }></Ionicons>
+        </Button>
+        <Button style={ styles.button } containerStyle={ styles.buttonContainer } onPress={ higher }>
+          <Ionicons name="md-add-circle" size={ 50 }></Ionicons>
+        </Button>
       </Card>
     </View>
   );
@@ -81,8 +86,9 @@ export default function GamePage(props: GamePageProps) {
 
 const styles = StyleSheet.create({
   page: { ...pageStyle, alignItems: 'center' },
-  buttonCard: { backgroundColor: 'white', padding: Spaces.innerPadding, flexDirection: 'row', justifyContent: 'space-between' },
-  button: {  ...buttonStyle, marginHorizontal: 10 },
+  buttonCard: { backgroundColor: 'white', padding: Spaces.innerPadding, flexDirection: 'row', justifyContent: 'space-between', width: 150 },
+  button: {  ...buttonStyle, marginHorizontal: 30 },
+  buttonContainer: { width: 50, height: 50 /*, marginHorizontal: 30*/ }
 });
 
 
