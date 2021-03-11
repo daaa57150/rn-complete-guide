@@ -7,9 +7,12 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@models/*": ["src/models/*"],
+      "@store/*": ["src/store/*"],
 
-      "@fonts": ["../assets/fonts/*"],
-      "@images": ["./assets/images/*"]
+      "@data/*": ["src/data/*"],
+
+      "@fonts/*": ["assets/fonts/*"],
+      "@images/*": ["assets/images/*"]
     },
     "importHelpers": true,
 

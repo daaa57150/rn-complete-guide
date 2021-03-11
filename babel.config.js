@@ -22,6 +22,9 @@ module.exports = function(api) {
             '@components': './src/components',
             '@constants': './src/constants',
             '@models': './src/models',
+            '@store': './src/store',
+
+            '@data': './src/data',
 
             '@fonts': './assets/fonts',
             '@images': './assets/images'

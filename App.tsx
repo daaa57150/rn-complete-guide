@@ -1,9 +1,12 @@
 import Main from '@components/main.component';
 import { fontFamily } from '@constants/styles.const';
+import productsReducer from '@store/products/reducer';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import React, { useEffect, useState } from 'react';
 import { NativeModules } from 'react-native';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
 
 // Moved sources like described here:
 // https://forums.expo.io/t/change-project-file-structure-and-stop-using-relative-paths/2055/9
@@ -22,6 +25,14 @@ const loadFonts = async () => {
     [fontFamily.OpenSansRegular]: require('@fonts/OpenSans-Regular.ttf'),
   });
 };
+
+
+// may be moved in a 'store.ts' file ? //
+const rootReducer = combineReducers({
+  products: productsReducer
+});
+const store = createStore(rootReducer);
+// ----------------------------------- //
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +54,11 @@ export default function App() {
   if(isLoading) {
     return <AppLoading></AppLoading>
   }
-  return <Main></Main>;
+  return (
+    <Provider store={ store }>
+      <Main></Main>
+    </Provider>
+  );
 };
 
 

@@ -5,5 +5,22 @@
       "source.organizeImports": true,
   },
 
-  "react-native.packager.port": 19000
+  "react-native.packager.port": 19000,
+  "vsicons.associations.folders": [{
+    "icon": "view",
+    "extensions": ["screen", "_screen", "screens", "_screens"],
+    "format": "svg"
+  }, {
+    "icon": "include",
+    "extensions": ["common"],
+    "format": "svg",
+  }, {
+    "icon": "config",
+    "extensions": ["constant", "constants", "_constant", "_constants"],
+    "format": "svg",
+  }, {
+    "icon": "redux",
+    "extensions": ["store"],
+    "format": "svg",
+  }]
 }
