@@ -3,5 +3,7 @@
   "files.trimTrailingWhitespace": true,
   "editor.codeActionsOnSave": {
       "source.organizeImports": true,
-  }
+  },
+
+  "react-native.packager.port": 19000
 }

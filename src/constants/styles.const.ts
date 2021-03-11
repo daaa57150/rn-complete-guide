@@ -1,4 +1,4 @@
-import { ViewStyle, TextStyle, StyleProp } from "react-native";
+import { TextStyle, ViewStyle } from "react-native";
 
 // padding function:
 // https://stackoverflow.com/a/55724273
@@ -20,10 +20,11 @@ const colors = {
 
 // Colors by usage
 export namespace Colors {
+  export const primary = colors.blue;
   export const background = colors.red;
   export const button = {
-    primary: '#44f',
-    cancel: 'red'
+    primary: primary,
+    cancel: colors.red
   };
   export const cell = colors.lightGray;
 };
@@ -35,10 +36,13 @@ export namespace Spaces {
     bottom: 30,
     horizontal: 20
   };
+
+  export const innerPadding = 10;
+  export const separation = 10;
 };
 
 export const Fonts = {
-  size: 20, 
+  size: 20,
   color: 'green'
 };
 
@@ -50,7 +54,7 @@ export const inputStyle: TextStyle = {
 };
 
 export const buttonStyle: TextStyle = {
-  fontSize: 20, 
+  fontSize: 20,
   color: Colors.button.primary,
   backgroundColor: '#888',
   paddingHorizontal: 10,
@@ -71,11 +75,35 @@ export const listItemStyle: ViewStyle = {
 
 export const appContainerStyle: ViewStyle = {
   backgroundColor: Colors.background,
-  paddingTop: Spaces.paddingScreen.top,
-  paddingHorizontal: Spaces.paddingScreen.horizontal,
-  paddingBottom: Spaces.paddingScreen.bottom,
+  paddingTop: 0, // Spaces.paddingScreen.top,
+  paddingHorizontal: 0, // Spaces.paddingScreen.horizontal,
+  // paddingBottom: Spaces.paddingScreen.bottom,
   flex: 1, // takes up all the height
+  flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-start', // top
 };
+
+export const pageStyle: ViewStyle = {
+  paddingHorizontal: Spaces.paddingScreen.horizontal,
+  paddingTop: 20,
+  flex: 1,
+  width: '100%'
+};
+
+export const shadowStyle: ViewStyle = {
+  // iOS  only:
+  shadowColor: 'black',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.7,
+  shadowRadius: 3,
+  // Android only:
+  elevation: 6
+}
+
+export const fontFamily = {
+  OpenSansBold: 'OpenSans-Bold',
+  OpenSansRegular: 'OpenSans-Regular'
+};
+
 

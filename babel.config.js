@@ -21,7 +21,10 @@ module.exports = function(api) {
             '@helpers': './src/helpers',
             '@components': './src/components',
             '@constants': './src/constants',
-            '@models': './src/models'
+            '@models': './src/models',
+
+            '@fonts': './assets/fonts',
+            '@images': './assets/images'
           },
         }
       ]

@@ -20,4 +20,7 @@ export const newId = (size: number): string => {
   return randomChars(input);
 };
 
+/** Including bounds */
+export const randomInt = (min: number, max: number) => _.random(Math.ceil(min), Math.floor(max));
+
 
