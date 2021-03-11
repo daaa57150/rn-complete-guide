@@ -22,5 +22,9 @@
     "icon": "redux",
     "extensions": ["store"],
     "format": "svg",
+  }, {
+    "icon": "route",
+    "extensions": ["navigation"],
+    "format": "svg",
   }]
 }

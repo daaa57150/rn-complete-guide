@@ -1,12 +1,14 @@
-import Main from '@components/main.component';
 import { fontFamily } from '@constants/styles.const';
+import { ShopNavigator } from '@navigation/shop.navigator';
 import productsReducer from '@store/products/reducer';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { NativeModules } from 'react-native';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+
 
 // Moved sources like described here:
 // https://forums.expo.io/t/change-project-file-structure-and-stop-using-relative-paths/2055/9
@@ -56,7 +58,10 @@ export default function App() {
   }
   return (
     <Provider store={ store }>
-      <Main></Main>
+      <ShopNavigator />
+
+      {/* colors don't work... */}
+      <StatusBar style="auto" backgroundColor="#C2185B" translucent={ false } />
     </Provider>
   );
 };
