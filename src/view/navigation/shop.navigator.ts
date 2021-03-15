@@ -1,4 +1,5 @@
 import { Colors } from '@constants/styles.const';
+import ProductDetailsScreen from '@screens/shop/product-details.screen';
 import ProductsOverviewScreen from '@screens/shop/products-overview.screen';
 import { Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
@@ -6,7 +7,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 
 const shopNavigator = createStackNavigator({
-  ProductsOverview: ProductsOverviewScreen
+  ProductsOverview: ProductsOverviewScreen,
+  ProductDetails: ProductDetailsScreen
 }, {
   defaultNavigationOptions: {
     headerStyle: {
