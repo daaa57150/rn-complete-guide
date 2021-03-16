@@ -49,6 +49,6 @@ const PRODUCTS = [
     "Can be used for role-playing (not the kind of role-playing you're thinking about...).",
     5.49
   )
-];
+] as const;
 
 export default PRODUCTS;

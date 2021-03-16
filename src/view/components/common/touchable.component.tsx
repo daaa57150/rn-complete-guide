@@ -1,5 +1,5 @@
-import { Platform, TouchableNativeFeedbackProps } from "react-native";
-import { ContainedTouchableProperties, TouchableNativeFeedback, TouchableOpacity } from "react-native-gesture-handler";
+import { Platform, TouchableNativeFeedback, TouchableNativeFeedbackProps, TouchableOpacity } from "react-native";
+import { ContainedTouchableProperties } from "react-native-gesture-handler";
 
 // uses the ripple effect on android versions where supported, otherwise the standard opacity effect.
 

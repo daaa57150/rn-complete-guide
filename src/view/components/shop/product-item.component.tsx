@@ -17,20 +17,23 @@ export default function ProductItem(props: ProductItemProps) {
   // state management goes here
 
   return (
-    <Touchable onPress={ props.onViewDetail }>
-      <View key="[ProductItem]" style={ styles.product }>
-        <Image source={{ uri: product.imageUrl }} style={ styles.image }/>
-        <Text>{ product.title }</Text>
-        <Text>${ product.price }</Text>
-        <View key="[ProductItemButtons]" style={styles.controlsContainer}>
-          <Button onPress={ props.onViewDetail }>Details</Button>
+    <View key="[ProductItem]" style={ styles.product }>
+      <Touchable onPress={ props.onViewDetail } useForeground style={ styles.touchable }>
+        <View style={ styles.touchable }>
+          <Image source={{ uri: product.imageUrl }} style={ styles.image }/>
+          <Text>{ product.title }</Text>
+          <Text>${ product.price }</Text>
+          <View key="[ProductItemButtons]" style={styles.controlsContainer}>
+            <Button onPress={ props.onViewDetail }>Details</Button>
 
-          {/* Needs to be bigger or the touchable will swallow some presses */}
-          <Button onPress={ props.onAddToCart }>Add to cart</Button>
+            {/* Needs to be bigger or the touchable will swallow some presses */}
+            <Button onPress={ props.onAddToCart } containerStyle={{ height: 30, backgroundColor: 'red' }} style={{ }}>Add to cart</Button>
 
+          </View>
         </View>
-      </View>
-    </Touchable>
+
+      </Touchable>
+    </View>
   );
 };
 
@@ -44,6 +47,12 @@ const styles = StyleSheet.create({
     marginVertical: Spaces.separation,
     padding: Spaces.innerPadding,
     justifyContent: 'space-between'
+  },
+  touchable: {
+    height: '100%', // backgroundColor: 'green',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    //alignItems: 'center'
   },
   image: {
     width: '100%',

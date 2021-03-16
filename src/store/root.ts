@@ -1,5 +1,7 @@
 import { combineReducers, createStore, Store } from "redux";
-import { ProductActionType } from "./products/actions";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { CartAction } from "./cart/actions";
+import cartReducer from "./cart/reducer";
 import productsReducer, { ProductsState } from "./products/reducer";
 
 // export interface RootStore {
@@ -13,10 +15,12 @@ export interface RootState {
 }
 
 const rootReducer = combineReducers({
-  products: productsReducer
+  products: productsReducer,
+  cart: cartReducer
 });
 
-export const rootStore: Store<RootState, ProductActionType> = createStore(rootReducer);
+// TODO: in prod, remove composeWithDevTools!
+export const rootStore: Store<RootState, CartAction> = createStore(rootReducer, composeWithDevTools());
 
 
 

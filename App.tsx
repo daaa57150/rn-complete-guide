@@ -1,13 +1,12 @@
 import { fontFamily } from '@constants/styles.const';
 import { ShopNavigator } from '@navigation/shop.navigator';
-import productsReducer from '@store/products/reducer';
+import { rootStore } from '@store/root';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { NativeModules } from 'react-native';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore } from 'redux';
 
 
 // Moved sources like described here:
@@ -30,10 +29,10 @@ const loadFonts = async () => {
 
 
 // may be moved in a 'store.ts' file ? //
-const rootReducer = combineReducers({
-  products: productsReducer
-});
-const store = createStore(rootReducer);
+// const rootReducer = combineReducers({
+//   products: productsReducer
+// });
+// const store = createStore(rootReducer);
 // ----------------------------------- //
 
 export default function App() {
@@ -57,7 +56,7 @@ export default function App() {
     return <AppLoading></AppLoading>
   }
   return (
-    <Provider store={ store }>
+    <Provider store={ rootStore }>
       <ShopNavigator />
 
       {/* colors don't work... */}

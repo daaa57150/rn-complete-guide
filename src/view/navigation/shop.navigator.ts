@@ -1,4 +1,4 @@
-import { Colors } from '@constants/styles.const';
+import { Colors, fontFamily } from '@constants/styles.const';
 import ProductDetailsScreen from '@screens/shop/product-details.screen';
 import ProductsOverviewScreen from '@screens/shop/products-overview.screen';
 import { Platform } from 'react-native';
@@ -14,7 +14,9 @@ const shopNavigator = createStackNavigator({
     headerStyle: {
       backgroundColor: Platform.select({ android: Colors.primary })
     },
-    headerTintColor: Platform.select({ android: 'white', ios: Colors.primary })
+    headerTintColor: Platform.select({ android: 'white', ios: Colors.primary }),
+    headerTitleStyle: { fontFamily: fontFamily.OpenSansBold },
+    headerBackTitleStyle: { fontFamily: fontFamily.OpenSansRegular }
   }
 });
 

@@ -1,11 +1,12 @@
 // import * as u from '@helpers/utils';
 import ProductItem from '@components/shop/product-item.component';
 import { Product } from '@models/product';
+import { CartAction } from '@store/cart/actions';
 import { RootState } from '@store/root';
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ProductDetailsParams } from './product-details.screen';
 
 
@@ -17,10 +18,16 @@ type ScreenType = NavigationStackScreenComponent<Params, ScreenProps>;
 
 const ProductsOverviewScreen = (props: Props): JSX.Element => {
 
+  const dispatch = useDispatch();
+
   const showDetails = (product: Product) => {
     const params: ProductDetailsParams = { product };
     props.navigation.navigate({ routeName: 'ProductDetails', params });
   }
+
+  const addToCart = (product: Product) => {
+    dispatch(CartAction.addProductToCart(product));
+  };
 
   // state management goes here
   const products = useSelector((state: RootState) => state.products.availableProducts);
@@ -34,7 +41,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
       renderItem={ info => (
         <ProductItem
           product={ info.item }
-          onAddToCart={ () => console.log(`Add ${ info.item.title } to cart!`) }
+          onAddToCart={ () => addToCart(info.item) }
           onViewDetail={ () => showDetails(info.item) }
         />
       )}
@@ -43,7 +50,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
 };
 
 (ProductsOverviewScreen as ScreenType).navigationOptions = (props) => {
-  console.log(props);
+  // console.log(props);
   return {
     headerTitle: 'All products 1'
   };
