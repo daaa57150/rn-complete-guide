@@ -1,13 +1,17 @@
 // import * as u from '@helpers/utils';
+import CustomHeaderButton from '@components/common/custom-header-button.component';
 import ProductItem from '@components/shop/product-item.component';
 import { Product } from '@models/product';
 import { CartAction } from '@store/cart/actions';
 import { RootState } from '@store/root';
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductDetailsParams } from './product-details.screen';
+
+
 
 
 type Params = { userId?: string }; // params of the screen as in <MyScreen ...params />
@@ -51,8 +55,26 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
 
 (ProductsOverviewScreen as ScreenType).navigationOptions = (props) => {
   // console.log(props);
+  const onPressCart = () => {
+    console.log('Show the cart');
+  };
+
   return {
-    headerTitle: 'All products 1'
+    headerTitle: 'All products 1',
+    headerRight: () => <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
+      <Item title="Cart" iconName={ Platform.select({ android: 'md-cart', ios: 'ios-cart' })} onPress={ onPressCart } />
+    </HeaderButtons>
+
+
+    // headerRight: () => {
+    //   return <HeaderButton title="Cart"
+    //   IconComponent={ Ionicons } iconSize={ 23 }
+    //   color={ Platform.select({ android: 'white', ios: Colors.primary })}
+    //   {...props}
+    // />
+    // headerRight: () => <View style={{ width: 20, height: 20, backgroundColor: 'green' }}></View>
+
+    // headerRight: <View style={{ width: 20, height: 20, backgroundColor: 'green' }}></View>
   };
 }
 

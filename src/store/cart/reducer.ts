@@ -33,7 +33,7 @@ const addProductToCart = (state: CartState, product: Product): CartState => {
   return { ...state, items, totalPrice };
 };
 
-function productsReducer(state = initialState, action: CartAction ): CartState {
+function cartReducer(state = initialState, action: CartAction ): CartState {
   switch(action.type) {
     case ADD_PRODUCT_TO_CART: {
       return addProductToCart(state, action.product);
@@ -42,4 +42,4 @@ function productsReducer(state = initialState, action: CartAction ): CartState {
   return state;
 };
 
-export default productsReducer;
+export default cartReducer;
