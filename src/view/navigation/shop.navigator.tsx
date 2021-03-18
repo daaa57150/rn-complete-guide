@@ -27,10 +27,7 @@ const shopNavigator = createStackNavigator({
     },
     headerTintColor: Platform.select({ android: 'white', ios: Colors.primary }),
     headerTitleStyle: { fontFamily: fontFamily.OpenSansBold },
-    headerBackTitleStyle: { fontFamily: fontFamily.OpenSansRegular },
-    // headerRight: () => {
-    //   return <View style={{ width: 20, height: 20, backgroundColor: 'green' }}></View>
-    // }
+    headerBackTitleStyle: { fontFamily: fontFamily.OpenSansRegular }
   }
 });
 

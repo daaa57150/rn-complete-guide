@@ -61,20 +61,12 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
 
   return {
     headerTitle: 'All products 1',
-    headerRight: () => <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
-      <Item title="Cart" iconName={ Platform.select({ android: 'md-cart', ios: 'ios-cart' })} onPress={ onPressCart } />
-    </HeaderButtons>
-
-
-    // headerRight: () => {
-    //   return <HeaderButton title="Cart"
-    //   IconComponent={ Ionicons } iconSize={ 23 }
-    //   color={ Platform.select({ android: 'white', ios: Colors.primary })}
-    //   {...props}
-    // />
-    // headerRight: () => <View style={{ width: 20, height: 20, backgroundColor: 'green' }}></View>
-
-    // headerRight: <View style={{ width: 20, height: 20, backgroundColor: 'green' }}></View>
+    headerRight: (_piou) => {
+      // console.log('piou: ', _piou);
+      return <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
+        <Item title="Cart" iconName={ Platform.select({ android: 'md-cart', ios: 'ios-cart' })} onPress={ onPressCart } />
+      </HeaderButtons>;
+    }
   };
 }
 
