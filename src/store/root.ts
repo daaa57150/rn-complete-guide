@@ -1,7 +1,7 @@
-import { combineReducers, createStore, Store } from "redux";
+import { CombinedState, combineReducers, createStore, Reducer, Store } from "redux";
 // import { composeWithDevTools } from "redux-devtools-extension";
 import { CartAction } from "./cart/actions";
-import cartReducer from "./cart/reducer";
+import cartReducer, { CartState } from "./cart/reducer";
 import productsReducer, { ProductsState } from "./products/reducer";
 
 // export interface RootStore {
@@ -11,10 +11,11 @@ import productsReducer, { ProductsState } from "./products/reducer";
 // export type RootState = ProductsState;
 
 export interface RootState {
-  products: ProductsState
+  products: ProductsState,
+  cart: CartState
 }
 
-const rootReducer = combineReducers({
+const rootReducer: Reducer<CombinedState<RootState>, CartAction> = combineReducers({
   products: productsReducer,
   cart: cartReducer
 });

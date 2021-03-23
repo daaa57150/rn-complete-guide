@@ -58,6 +58,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
   // console.log(props);
   const onPressCart = () => {
     console.log('Show the cart');
+    props.navigation.navigate('Cart');
   };
 
   return {

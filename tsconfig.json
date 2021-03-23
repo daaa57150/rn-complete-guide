@@ -17,6 +17,7 @@
       "@fonts/*": ["assets/fonts/*"],
       "@images/*": ["assets/images/*"]
     },
+    "target": "es5",
     "importHelpers": true,
 
     "jsx": "react-native",

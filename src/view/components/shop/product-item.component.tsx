@@ -1,5 +1,6 @@
 import Touchable from '@components/common/touchable.component';
 import { shadowStyle, Spaces } from '@constants/styles.const';
+import * as u from '@helpers/utils';
 import { Product } from '@models/product';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
@@ -11,13 +12,13 @@ export interface ProductItemProps  {
   onAddToCart: () => void
 }
 
-export default function ProductItem(props: ProductItemProps) {
+export default function ProductItemComponent(props: ProductItemProps) {
   const product = props.product;
 
   // state management goes here
 
   return (
-    <View key="[ProductItem]" style={ styles.product }>
+    <View key={ u.componentKey('ProductItem', product.id) } style={ styles.product }>
       <Touchable onPress={ props.onViewDetail } useForeground style={ styles.touchable }>
         <View style={ styles.touchable }>
           <Image source={{ uri: product.imageUrl }} style={ styles.image }/>
