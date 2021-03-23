@@ -1,4 +1,5 @@
 import { Spaces } from '@constants/styles.const';
+import { formatPrice } from '@helpers/formatters';
 import { Product } from '@models/product';
 import { CartAction } from '@store/cart/actions';
 import React from 'react';
@@ -32,7 +33,7 @@ function ProductDetailsScreen(props: Props) {
         <View key="[Controls]" style={ styles.controls }>
           <Button onPress={ addToCart }>Add to cart</Button>
         </View>
-        <Text style={ styles.price }>${ product.price }</Text>
+        <Text style={ styles.price }>${ formatPrice(product.price) }</Text>
         <Text style={ styles.description }>{ product.description }</Text>
       </View>
     </ScrollView>

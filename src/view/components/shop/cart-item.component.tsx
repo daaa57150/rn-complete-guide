@@ -1,8 +1,8 @@
 import Touchable from '@components/common/touchable.component';
 import { trashIcon } from '@constants/icons.const';
-import { shadowStyle, Spaces } from '@constants/styles.const';
+import { Spaces } from '@constants/styles.const';
 import { Ionicons } from '@expo/vector-icons';
-import * as u from '@helpers/utils';
+import { formatPrice } from '@helpers/formatters';
 import { CartItem } from '@models/cartItem';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -23,13 +23,13 @@ export default function CartItemComponent(props: CartItemProps) {
   // state management goes here
 
   return (
-    <View key={ u.componentKey('CartItem', product.id) } style={ styles.item }>
-      <Text>
-        <Text>{ quantity }</Text>
+    <View  style={ styles.item }>
+      <Text style={ styles.left }>
+        <Text>{ quantity }</Text>&nbsp;
         <Text>{ product.title }</Text>
       </Text>
-      <View>
-        <Text>{ props.item.price }</Text>
+      <View style={ styles.right }>
+        <Text style={ styles.price }>{ formatPrice(props.item.price) }</Text>
         <Touchable onPress={ props.onRemove }>
           <Ionicons name={ trashIcon } size={ 23 } color="red" />
         </Touchable>
@@ -41,13 +41,21 @@ export default function CartItemComponent(props: CartItemProps) {
 // TODO: style me!
 const styles = StyleSheet.create({
   item: {
-    ...shadowStyle,
-    borderRadius: 10,
-    backgroundColor: 'white',
-    marginVertical: Spaces.separation,
     padding: Spaces.innerPadding,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
+  left: {
+    flexDirection: 'row'
+  },
+  right: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  price: {
+    paddingRight: Spaces.separation
+  }
 });
 
 

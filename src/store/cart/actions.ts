@@ -1,3 +1,5 @@
+
+import { ReduxLifecycleAction } from "@helpers/frameworks";
 import { Product } from "@models/product";
 
 export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART'
@@ -13,10 +15,15 @@ export interface RemoveProductFromCartAction {
   product: Product;
 }
 
-export type CartAction = AddProductToCartAction | RemoveProductFromCartAction;
+export type CartAction = AddProductToCartAction | RemoveProductFromCartAction | ReduxLifecycleAction;
+
 export namespace CartAction {
   export const addProductToCart = (product: Product): AddProductToCartAction => ({
     type: ADD_PRODUCT_TO_CART, product
+  });
+
+  export const removeProductFromCart = (product: Product): RemoveProductFromCartAction => ({
+    type: REMOVE_PRODUCT_FROM_CART, product
   });
 };
 
