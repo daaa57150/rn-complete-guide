@@ -8,6 +8,7 @@ export * from './async.utils';
 // export * from './url.utils';
 export * from './const.utils';
 export * from './convert.utils';
+export * from './expo.utils';
 // export * from './dom.utils';
 // // export * from './date.utils';
 // // export * from './english.utils';
