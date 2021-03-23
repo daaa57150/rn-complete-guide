@@ -1,4 +1,4 @@
-import { CartItem } from "./cartItem";
+import { CartItem } from "./cart-item";
 
 export interface Order {
   id: string,
@@ -10,7 +10,7 @@ export interface Order {
 export class Order {
   public date: Date;
 
-  constructor(
+  public constructor(
     public id: string,
     public items: CartItem[],
     public totalPrice: number,

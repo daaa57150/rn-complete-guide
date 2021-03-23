@@ -1,6 +1,6 @@
 
 import { ReduxLifecycleAction } from "@helpers/frameworks";
-import { CartItem } from "@models/cartItem";
+import { CartItem } from "@models/cart-item";
 
 const ADD_ORDER = 'ADD_ORDER';
 

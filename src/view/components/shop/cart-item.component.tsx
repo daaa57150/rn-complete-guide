@@ -3,7 +3,7 @@ import { trashIcon } from '@constants/icons.const';
 import { Spaces } from '@constants/styles.const';
 import { Ionicons } from '@expo/vector-icons';
 import { formatPrice } from '@helpers/formatters';
-import { CartItem } from '@models/cartItem';
+import { CartItem } from '@models/cart-item';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 

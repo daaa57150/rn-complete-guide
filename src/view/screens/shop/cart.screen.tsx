@@ -2,7 +2,7 @@ import RenderIf from '@components/common/render-if.component';
 import CartItemComponent from '@components/shop/cart-item.component';
 import { Colors, fontFamily, pageStyle, shadowStyle, Spaces } from '@constants/styles.const';
 import { formatPrice } from '@helpers/formatters';
-import { CartItem } from '@models/cartItem';
+import { CartItem } from '@models/cart-item';
 import { CartAction } from '@store/cart/actions';
 import { RootState } from '@store/root';
 import _ from 'lodash-es';

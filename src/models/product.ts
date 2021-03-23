@@ -8,7 +8,7 @@ export interface Product {
 };
 
 export class Product {
-  constructor(
+  public constructor(
     public id: string,
     public ownerId: string,
     public title: string,

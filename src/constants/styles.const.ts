@@ -23,7 +23,7 @@ export namespace Colors {
   export const primary = colors.blue;
   export const background = colors.red;
   export const button = {
-    primary: primary,
+    primary,
     cancel: colors.red
   };
   export const cell = colors.lightGray;

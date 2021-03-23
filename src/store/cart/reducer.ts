@@ -1,4 +1,4 @@
-import { CartItem } from "@models/cartItem";
+import { CartItem } from "@models/cart-item";
 import { Product } from "@models/product";
 import { CartAction } from '@store/cart/actions';
 import _ from 'lodash-es';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+// tslint:disable-next-line: no-empty-interface
 export interface TemplateProps  {
   // props
 }

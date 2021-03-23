@@ -1,10 +1,9 @@
 // used throughout the utils (convert & dates)
 // export type DateRepresentation = string | Date | number | null | undefined | NgbDateStruct | NgbDate;
 
-import _ from "lodash-es";
 
 
-export type Primitive = string | number | bigint | boolean | symbol | null | undefined;
+export type Primitive = string | number | bigint | boolean | symbol; // | null | undefined;
 
 /** A string that can contain HTML */
 export type Html = string;
@@ -12,7 +11,7 @@ export type Html = string;
 export type Optional<T> = T | null | undefined;
 
 /** If T is an Array, then the generic type of the array else T */
-export type UnArray<T> = T extends Array<infer U> ? U : T;
+export type UnArray<T> = T extends (infer U)[] ? U : T;
 
 /** A class type more or less */
 export type Constructor<T> = new (...args: any[]) => T;

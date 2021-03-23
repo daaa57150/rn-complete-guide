@@ -1,4 +1,4 @@
-import { CartItem } from "@models/cartItem";
+import { CartItem } from "@models/cart-item";
 import { Order } from "@models/order";
 import { OrdersAction } from "./actions";
 

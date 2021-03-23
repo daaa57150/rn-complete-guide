@@ -2,8 +2,9 @@
 
 export class Deferred<T = void> {
   public promise: Promise<T>;
-  public resolve: (value: T | PromiseLike<T>) => void = () => {};
-  public reject: (reason?: any) => void = () => {};
+  public resolve: (value: T | PromiseLike<T>) => void = () => undefined;
+  // tslint:disable-next-line: no-any
+  public reject: (reason?: any) => void = () => undefined;
 
   public constructor() {
     this.promise = new Promise<T>((resolve, reject) => {
