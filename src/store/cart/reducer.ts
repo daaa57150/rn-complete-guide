@@ -1,6 +1,6 @@
 import { CartItem } from "@models/cartItem";
 import { Product } from "@models/product";
-import { ADD_PRODUCT_TO_CART, CartAction, REMOVE_PRODUCT_FROM_CART } from '@store/cart/actions';
+import { CartAction } from '@store/cart/actions';
 import _ from 'lodash-es';
 
 
@@ -47,10 +47,10 @@ const removeProductFromCart = (state: CartState, product: Product): CartState =>
 function cartReducer(state = initialState, action: CartAction ): CartState {
   console.log('ACTION:', action);
   switch(action.type) {
-    case ADD_PRODUCT_TO_CART: {
+    case 'ADD_PRODUCT_TO_CART': {
       return addProductToCart(state, action.product);
     }
-    case REMOVE_PRODUCT_FROM_CART: {
+    case 'REMOVE_PRODUCT_FROM_CART': {
       return removeProductFromCart(state, action.product);
     }
   }

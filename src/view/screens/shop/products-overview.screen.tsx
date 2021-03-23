@@ -1,11 +1,12 @@
 // import * as u from '@helpers/utils';
 import CustomHeaderButton from '@components/common/custom-header-button.component';
-import ProductItem from '@components/shop/product-item.component';
+import ProductItemComponent from '@components/shop/product-item.component';
+import { cartIcon } from '@constants/icons.const';
 import { Product } from '@models/product';
 import { CartAction } from '@store/cart/actions';
 import { RootState } from '@store/root';
 import React from 'react';
-import { FlatList, Platform, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +45,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
       ListFooterComponent={ <View style={{ height: 40 }}></View>}
       data={products}
       renderItem={ info => (
-        <ProductItem
+        <ProductItemComponent
           product={ info.item }
           onAddToCart={ () => addToCart(info.item) }
           onViewDetail={ () => showDetails(info.item) }
@@ -66,7 +67,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
     headerRight: (_piou) => {
       // console.log('piou: ', _piou);
       return <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
-        <Item title="Cart" iconName={ Platform.select({ android: 'md-cart', ios: 'ios-cart' })} onPress={ onPressCart } />
+        <Item title="Cart" iconName={ cartIcon } onPress={ onPressCart } />
       </HeaderButtons>;
     }
   };
