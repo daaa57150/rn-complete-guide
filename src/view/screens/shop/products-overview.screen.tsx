@@ -30,6 +30,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
   }
 
   const addToCart = (product: Product) => {
+    console.log('add to cart action go!');
     dispatch(CartAction.addProductToCart(product));
   };
 

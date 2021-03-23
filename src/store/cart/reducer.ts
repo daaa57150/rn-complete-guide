@@ -14,14 +14,18 @@ const initialState: CartState = {
   totalPrice: 0
 };
 
-const findItemByProduct = (state: CartState, product: Product): CartItem|undefined =>
-  _.find(state.items, (item: CartItem) => item.product.id === product.id);
+const findItemByProduct = (state: CartState, product: Product): CartItem|undefined => {
+  console.log('state:', state);
+  console.log('product:', product);
+  return _.find(state.items, (item: CartItem) => item.product.id === product.id);
+}
 
 const calculatePrice = (items: CartItem[]): number =>
   _.reduce(items, (aggregate, item) => aggregate + item.quantity * item.product.price, 0);
 
 const addProductToCart = (state: CartState, product: Product): CartState => {
   const item = findItemByProduct(state, product);
+  console.log('adding this to cart: ', product);
   const newItem: CartItem = {
     product, quantity: (item?.quantity || 0) + 1
   };
