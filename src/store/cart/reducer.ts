@@ -53,6 +53,9 @@ function cartReducer(state = initialState, action: CartAction ): CartState {
     case 'REMOVE_PRODUCT_FROM_CART': {
       return removeProductFromCart(state, action.product);
     }
+    case 'CLEAR_CART': {
+      return initialState;
+    }
   }
   return state;
 };

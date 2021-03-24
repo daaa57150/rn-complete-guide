@@ -4,6 +4,7 @@ import { Colors, fontFamily, pageStyle, shadowStyle, Spaces } from '@constants/s
 import { formatPrice } from '@helpers/formatters';
 import { CartItem } from '@models/cart-item';
 import { CartAction } from '@store/cart/actions';
+import { OrdersAction } from '@store/orders/actions';
 import { RootState } from '@store/root';
 import _ from 'lodash-es';
 import React from 'react';
@@ -22,12 +23,16 @@ export default function CartScreen(props: CartScreenProps) {
 
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
   const items = useSelector((state: RootState) => state.cart.items);
-  const isEmpty = _.isEmpty(items); // NOT SURE IT IS CORRECT (useEffect ?)
-  // const isEmpty = useSelector((state: RootState) => state.cart.isEmpty);
-  // const isEmpty = useEffect(() => _.isEmpty(items) )
+  const isEmpty = _.isEmpty(items);
+
   const removeItem = (item: CartItem) => {
     console.log(`remove ${item.product.title}`);
     dispatch(CartAction.removeProductFromCart(item.product));
+  };
+
+  const placeOrder = () => {
+    dispatch(OrdersAction.addOrder(items, totalPrice));
+    dispatch(CartAction.clearCart());
   };
 
   return (
@@ -37,7 +42,7 @@ export default function CartScreen(props: CartScreenProps) {
           Total:&nbsp;
           <Text style={ styles.totalPrice }>${ formatPrice(totalPrice) }</Text>
         </Text>
-        <Button disabled={ isEmpty } onPress={ ()=>{} }>Order now</Button>
+        <Button disabled={ isEmpty } onPress={ placeOrder }>Order now</Button>
       </View>
       <RenderIf condition={ isEmpty }>
         <Text>Your cart is empty</Text>
@@ -58,7 +63,7 @@ export default function CartScreen(props: CartScreenProps) {
 
 const styles = StyleSheet.create({
   cart: {
-    ...pageStyle //margin: Spaces.paddingScreen.horizontal
+    ...pageStyle // margin: Spaces.paddingScreen.horizontal
   },
   summary: {
     ...shadowStyle,

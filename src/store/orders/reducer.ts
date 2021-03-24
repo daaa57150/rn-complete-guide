@@ -1,3 +1,4 @@
+import * as u from '@helpers/utils';
 import { CartItem } from "@models/cart-item";
 import { Order } from "@models/order";
 import { OrdersAction } from "./actions";
@@ -11,8 +12,8 @@ const initialState: OrdersState = {
   orders: []
 };
 
-const addOrder = (state: OrdersState, items: CartItem[], totalPrice: number): OrdersState => {
-  const newOrder: Order = { items, totalPrice };
+const addOrder = (state: OrdersState, items: readonly CartItem[], totalPrice: number): OrdersState => {
+  const newOrder = new Order(u.newGuid(), items, totalPrice);
   const orders = [...state.orders, newOrder];
   return { ...initialState, orders };
 }

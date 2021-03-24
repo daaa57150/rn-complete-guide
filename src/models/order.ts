@@ -2,7 +2,7 @@ import { CartItem } from "./cart-item";
 
 export interface Order {
   id: string,
-  items: CartItem[],
+  items: readonly CartItem[],
   totalPrice: number,
   date: Date
 }
@@ -12,7 +12,7 @@ export class Order {
 
   public constructor(
     public id: string,
-    public items: CartItem[],
+    public items: readonly CartItem[],
     public totalPrice: number,
     date?: Date
   ) {
