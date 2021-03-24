@@ -16,7 +16,7 @@ import { ProductDetailsParams } from './product-details.screen';
 
 
 type Params = { userId?: string }; // params of the screen as in <MyScreen ...params />
-type ScreenProps = unknown; //{ language?: string };
+type ScreenProps = unknown; // { language?: string };
 
 type Props = React.PropsWithChildren<NavigationStackScreenProps<Params, ScreenProps>>;
 type ScreenType = NavigationStackScreenComponent<Params, ScreenProps>;
@@ -42,7 +42,7 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
     <FlatList
       key="[ProductsOverview]"
       style={ styles.list }
-      ListFooterComponent={ <View style={{ height: 40 }}></View>}
+      ListFooterComponent={ <View style={{ height: 40 }} />}
       data={products}
       renderItem={ info => (
         <ProductItemComponent

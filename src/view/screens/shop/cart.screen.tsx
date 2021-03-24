@@ -10,13 +10,16 @@ import _ from 'lodash-es';
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
+import { ScreenProps } from 'react-native-screens';
+import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
 import { useDispatch, useSelector } from 'react-redux';
 
-export interface CartScreenProps  {
-  // props
-}
 
-export default function CartScreen(props: CartScreenProps) {
+// private typings for the screen
+type Props = React.PropsWithChildren<NavigationStackScreenProps<void, ScreenProps>>;
+type ScreenType = NavigationStackScreenComponent<void, ScreenProps>;
+
+export default function CartScreen(_props: Props) {
   // state management goes here
 
   const dispatch = useDispatch();
@@ -61,6 +64,13 @@ export default function CartScreen(props: CartScreenProps) {
   );
 };
 
+
+(CartScreen as ScreenType).navigationOptions = (props) => {
+  return {
+    headerTitle: 'Your cart'
+  };
+};
+
 const styles = StyleSheet.create({
   cart: {
     ...pageStyle // margin: Spaces.paddingScreen.horizontal
@@ -79,5 +89,6 @@ const styles = StyleSheet.create({
     // overflow: 'visible'
   }
 });
+
 
 
