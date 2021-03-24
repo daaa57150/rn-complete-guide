@@ -1,7 +1,10 @@
+import CustomHeaderButton from '@components/common/custom-header-button.component';
+import { menuIcon } from '@constants/icons.const';
 import { pageStyle } from '@constants/styles.const';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ScreenProps } from 'react-native-screens';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
 
 
@@ -28,8 +31,19 @@ export default function OrdersOverviewScreen(props: Props) {
 };
 
 (OrdersOverviewScreen as ScreenType).navigationOptions = (props) => {
+
+  const onPressMenu = () => {
+    console.log('Show the menu; props:', props);
+    (props.navigation as any).toggleDrawer();
+  }
+
   return {
-    headerTitle: 'Your orders'
+    headerTitle: 'Your orders',
+    headerLeft: (_piou) => {
+      return <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
+        <Item title="Menu" iconName={ menuIcon } onPress={ onPressMenu } />
+      </HeaderButtons>;
+    },
   };
 };
 

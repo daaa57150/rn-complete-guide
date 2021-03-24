@@ -12,8 +12,8 @@ const options: CreateNavigatorConfig<NavigationDrawerConfig, NavigationDrawerRou
 };
 
 const drawerNavigator = createDrawerNavigator({
+  Shop: ShopNavigator,
   Orders: OrdersNavigator,
-  Shop: ShopNavigator
 }, options);
 
-export default createAppContainer(drawerNavigator);
+export const DrawerNavigator = createAppContainer(drawerNavigator);

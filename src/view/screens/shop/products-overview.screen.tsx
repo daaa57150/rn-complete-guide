@@ -1,18 +1,18 @@
 // import * as u from '@helpers/utils';
 import CustomHeaderButton from '@components/common/custom-header-button.component';
 import ProductItemComponent from '@components/shop/product-item.component';
-import { cartIcon } from '@constants/icons.const';
+import { cartIcon, menuIcon } from '@constants/icons.const';
 import { Product } from '@models/product';
 import { CartAction } from '@store/cart/actions';
 import { RootState } from '@store/root';
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { NavigationDrawerProp } from 'react-navigation-drawer';
+// import { NavigationDrawerScreenComponent, NavigationDrawerScreenProps } from 'react-navigation-drawer';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent, NavigationStackScreenProps } from 'react-navigation-stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductDetailsParams } from './product-details.screen';
-
-
 
 
 type Params = { userId?: string }; // params of the screen as in <MyScreen ...params />
@@ -20,6 +20,9 @@ type ScreenProps = unknown; // { language?: string };
 
 type Props = React.PropsWithChildren<NavigationStackScreenProps<Params, ScreenProps>>;
 type ScreenType = NavigationStackScreenComponent<Params, ScreenProps>;
+
+// type Props = React.PropsWithChildren<NavigationDrawerScreenProps<Params, ScreenProps>>;
+// type ScreenType = NavigationDrawerScreenComponent<Params, ScreenProps>;
 
 const ProductsOverviewScreen = (props: Props): JSX.Element => {
 
@@ -56,15 +59,25 @@ const ProductsOverviewScreen = (props: Props): JSX.Element => {
 };
 
 (ProductsOverviewScreen as ScreenType).navigationOptions = (props) => {
-  // console.log(props);
+
   const onPressCart = () => {
     console.log('Show the cart');
     props.navigation.navigate('Cart');
   };
 
+  const onPressMenu = () => {
+    console.log('Show the menu; props:', props);
+    (props.navigation as unknown as NavigationDrawerProp).toggleDrawer();  // vtff
+  }
+
   return {
     headerTitle: 'All products 1',
-    headerRight: (_piou) => {
+    headerLeft: () => {
+      return <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
+        <Item title="Menu" iconName={ menuIcon } onPress={ onPressMenu } />
+      </HeaderButtons>;
+    },
+    headerRight: () => {
       // console.log('piou: ', _piou);
       return <HeaderButtons HeaderButtonComponent={ CustomHeaderButton }>
         <Item title="Cart" iconName={ cartIcon } onPress={ onPressCart } />

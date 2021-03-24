@@ -1,5 +1,5 @@
 import { fontFamily } from '@constants/styles.const';
-import { ShopNavigator } from '@navigation/shop.navigator';
+import { DrawerNavigator } from '@navigation/drawer-navigator';
 import { rootStore } from '@store/root';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
@@ -53,11 +53,12 @@ export default function App() {
   });
 
   if(isLoading) {
-    return <AppLoading></AppLoading>
+    return <AppLoading />
   }
   return (
     <Provider store={ rootStore }>
-      <ShopNavigator />
+      {/* <ShopNavigator /> */}
+      <DrawerNavigator />
 
       {/* colors don't work... */}
       <StatusBar style="auto" backgroundColor="#C2185B" translucent={ false } />
