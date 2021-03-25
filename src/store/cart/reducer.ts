@@ -45,7 +45,7 @@ const removeProductFromCart = (state: CartState, product: Product): CartState =>
 }
 
 function cartReducer(state = initialState, action: CartAction ): CartState {
-  console.log('ACTION:', action);
+  // console.log('ACTION:', action);
   switch(action.type) {
     case 'ADD_PRODUCT_TO_CART': {
       return addProductToCart(state, action.product);

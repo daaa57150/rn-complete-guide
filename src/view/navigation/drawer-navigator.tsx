@@ -8,7 +8,8 @@ import { ShopNavigator } from "./shop.navigator";
 const options: CreateNavigatorConfig<NavigationDrawerConfig, NavigationDrawerRouterConfig, NavigationDrawerOptions, NavigationDrawerProp<NavigationRoute, any>> = {
   contentOptions: {
     activeTintColor: Colors.primary
-  }
+  },
+  drawerType: 'slide'
 };
 
 const drawerNavigator = createDrawerNavigator({
@@ -17,3 +18,5 @@ const drawerNavigator = createDrawerNavigator({
 }, options);
 
 export const DrawerNavigator = createAppContainer(drawerNavigator);
+
+

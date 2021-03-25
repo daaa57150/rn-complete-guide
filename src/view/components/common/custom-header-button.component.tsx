@@ -1,7 +1,7 @@
 import { Colors } from '@constants/styles.const';
 import { Ionicons } from "@expo/vector-icons";
 import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 import { HeaderButton, HeaderButtonProps } from "react-navigation-header-buttons";
 
 
@@ -16,7 +16,7 @@ export interface CustomHeaderButtonProps extends HeaderButtonProps {
 export default function CustomHeaderButton(props: CustomHeaderButtonProps) {
   // state management goes here
 
-  console.log('CustomHeaderButton!!!');
+  // console.log('CustomHeaderButton!!!');
 
   return (
     // <View key="[HeaderButton]" style={ styles.template }>
@@ -30,8 +30,8 @@ export default function CustomHeaderButton(props: CustomHeaderButtonProps) {
   );
 };
 
-const styles = StyleSheet.create({
-  template: { },
-});
+// const styles = StyleSheet.create({
+//   template: { },
+// });
 
 
